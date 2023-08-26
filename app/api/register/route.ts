@@ -1,14 +1,11 @@
 import bcrypt from "bcrypt";
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextResponse } from "next/server";
 import prismadb from "@/lib/prismadb";
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    if (req.method !== "POST") {
-        return res.status(405).end();
-    }
-
+export async function POST(req: Request) {
     try {
-        const { email, name, password } = req.body;
+        const body = await req.json();
+        const { email, name, password } = body;
 
         const existingUser = await prismadb.user.findUnique({
             where: {
@@ -17,7 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         });
 
         if (existingUser) {
-            return res.status(422).json({ error: "Email taken" })
+            return new NextResponse("Email Already Taken" , { status: 422 });
         }
 
         //check hashes
@@ -33,7 +30,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             }
         });
 
-        return res.status(200).json(user);
+        return NextResponse.json(user)
 
 
     } catch (error) {

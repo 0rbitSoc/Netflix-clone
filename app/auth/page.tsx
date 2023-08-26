@@ -27,7 +27,7 @@ const Auth = () => {
         } catch (error) {
             console.log(error);
         }
-    }, [])
+    }, [email, name, password])
 
     return (
         <div className="
@@ -91,16 +91,19 @@ const Auth = () => {
                                 value={password}
                             />
                         </div>
-                        <button className="
-                            bg-red-600
-                            text-white
-                            py-3
-                            rounded-md
-                            w-full
-                            mt-10
-                            hover:bg-red-700
-                            transition
-                        ">
+                        <button 
+                            onClick={register}
+                            className="
+                                bg-red-600
+                                text-white
+                                py-3
+                                rounded-md
+                                w-full
+                                mt-10
+                                hover:bg-red-700
+                                transition
+                            "
+                        >
                             {variant === 'login' ? 'Login' : 'Sign Up'}
                         </button>
                         <p className="text-sm text-neutral-500 mt-12">
