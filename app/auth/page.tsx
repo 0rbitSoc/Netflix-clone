@@ -1,7 +1,16 @@
+"use client";
+
+import { useState } from "react"
+
 import Input from "@/components/input"
 import Image from "next/image"
 
 const Auth = () => {
+
+    const [email, setEmail] = useState("");
+    const [name, setName] = useState("");
+    const [password, setPassword] = useState("");
+
     return (
         <div className="
             relative
@@ -42,7 +51,26 @@ const Auth = () => {
                             Sign In
                         </h2>
                         <div className="flex flex-col gap-4">
-                            <Input />
+                            <Input 
+                                label="Username"
+                                onChange={(e: any) => setName(e.target.value)}
+                                id="name"
+                                value={name}
+                            />
+                            <Input 
+                                label="Email"
+                                onChange={(e: any) => setEmail(e.target.value)}
+                                id="email"
+                                type="email"
+                                value={email}
+                            />
+                            <Input 
+                                label="Password"
+                                onChange={(e: any) => setPassword(e.target.value)}
+                                id="password"
+                                type="password"
+                                value={password}
+                            />
                         </div>
                     </div>
                 </div>

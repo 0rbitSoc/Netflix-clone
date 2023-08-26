@@ -1,8 +1,30 @@
-const Input = () => {
+"use client";
+
+import React from "react";
+
+interface InputProps {
+    id: string;
+    onChange: any;
+    value: string;
+    label: string;
+    type?: string;
+}
+
+
+const Input: React.FC<InputProps> = ({
+    id,
+    onChange,
+    value,
+    label,
+    type
+}) => {
     return (
        <div className="relative">
         <input
-            id="email" 
+            onChange={onChange}
+            value={value}
+            type={type}
+            id={id} 
             className="
                 block
                 rounded-md
@@ -21,14 +43,14 @@ const Input = () => {
             placeholder=" " //space needed
         />
         <label 
-            htmlFor="email"
+            htmlFor={id}
             className="
                 absolute
                 text-md
                 text-zinc-400
                 duration-150
                 transform
-                -translate-y-3
+                -translate-y-4
                 scale-75
                 top-4
                 z-10
@@ -40,7 +62,7 @@ const Input = () => {
                 peer-focus:-translate-y-3
             "
         > {/**Peer animation where label animates to top for writing */}
-            Email 
+            {label}
         </label>
        </div>
     )
