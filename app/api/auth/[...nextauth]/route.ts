@@ -3,7 +3,7 @@ import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { compare } from "bcrypt";
 
-export default NextAuth({
+const handler =  NextAuth({
     providers: [
         Credentials({
             id: "credentials",
@@ -55,4 +55,6 @@ export default NextAuth({
         secret: process.env.NEXTAUTH_JWT_SECRET,
     },
     secret: process.env.NEXTAUTH_SECRET,
-})
+});
+
+export { handler as GET, handler as POST }
