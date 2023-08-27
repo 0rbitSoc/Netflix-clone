@@ -1,5 +1,5 @@
 import prismadb from "@/lib/prismadb";
-import NextAuth, { AuthOptions } from "next-auth";
+import NextAuth, { SessionStrategy, AuthOptions } from "next-auth";
 import { compare } from "bcrypt";
 
 import Credentials from "next-auth/providers/credentials";
@@ -8,7 +8,7 @@ import GoogleProvider from "next-auth/providers/google";
 
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 
-const handler =  NextAuth({
+const handler  = NextAuth({
     providers: [
         GithubProvider({
             clientId: process.env.GITHUB_ID || "",
@@ -21,6 +21,7 @@ const handler =  NextAuth({
         Credentials({
             id: "credentials",
             name: "Credentials",
+            type: "credentials",
             credentials: {
                 email: {
                     label: "Email",
@@ -63,7 +64,7 @@ const handler =  NextAuth({
     debug: process.env.NODE_ENV === "development",
     adapter: PrismaAdapter(prismadb),
     session: {
-        strategy: "jwt", //JSON web tokens
+        strategy: "jwt" as SessionStrategy, //JSON web tokens
     },
     jwt: {
         secret: process.env.NEXTAUTH_JWT_SECRET,
