@@ -152,16 +152,21 @@ const Auth = () => {
                             ">
                                 <Google />
                             </div>
-                            <div className="
-                                w-10
-                                h-10
-                                bg-white
-                                rounded-full
-                                flex
-                                items-center
-                                justify-center
-                                cursor-pointer
-                            ">
+                            <div 
+                                onClick={() => signIn("github", {
+                                    callbackUrl: "/"
+                                })}
+                                className="
+                                    w-10
+                                    h-10
+                                    bg-white
+                                    rounded-full
+                                    flex
+                                    items-center
+                                    justify-center
+                                    cursor-pointer
+                                "
+                            >
                                 <Github />
                             </div>
                         </div>
