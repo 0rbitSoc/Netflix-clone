@@ -5,8 +5,11 @@ import { useCallback, useState } from "react"
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
-import Input from "@/components/input"
-import Image from "next/image"
+import Input from "@/components/input";
+import Image from "next/image";
+
+import Google from "@/components/interface/Google";
+import Github from "@/components/interface/Github";
 
 const Auth = () => {
 
@@ -129,6 +132,39 @@ const Auth = () => {
                         >
                             {variant === 'login' ? 'Login' : 'Sign Up'}
                         </button>
+                        <div className="
+                            flex
+                            flex-row
+                            items-center
+                            justify-center
+                            gap-4
+                            mt-8
+                        ">
+                            <div className="
+                                w-10
+                                h-10
+                                bg-white
+                                rounded-full
+                                flex
+                                items-center
+                                justify-center
+                                cursor-pointer
+                            ">
+                                <Google />
+                            </div>
+                            <div className="
+                                w-10
+                                h-10
+                                bg-white
+                                rounded-full
+                                flex
+                                items-center
+                                justify-center
+                                cursor-pointer
+                            ">
+                                <Github />
+                            </div>
+                        </div>
                         <p className="text-sm text-neutral-500 mt-12">
                             {variant === 'login' ? 'First time using Netflix?' : 'Already have an account?'}
                             <span
