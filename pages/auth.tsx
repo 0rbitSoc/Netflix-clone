@@ -2,7 +2,6 @@ import axios from 'axios';
 import { useCallback, useState } from 'react';
 import { NextPageContext } from 'next';
 import { getSession, signIn } from 'next-auth/react';
-import { useRouter } from 'next/router';
 import Image from "next/image";
 
 import Input from '@/components/input';
@@ -27,7 +26,6 @@ export async function getServerSideProps(context: NextPageContext) {
 }
 
 const Auth = () => {
-  const router = useRouter();
 
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
@@ -45,14 +43,13 @@ const Auth = () => {
         email,
         password,
         redirect: false,
-        callbackUrl: '/'
+        callbackUrl: '/profile'
       });
 
-      router.push('/');
     } catch (error) {
       console.log(error);
     }
-  }, [email, password, router]);
+  }, [email, password]);
 
   const register = useCallback(async () => {
     try {
@@ -108,10 +105,10 @@ const Auth = () => {
               {variant === 'login' ? 'Login' : 'Sign up'}
             </button>
             <div className="flex flex-row items-center gap-4 mt-8 justify-center">
-              <div onClick={() => signIn('google', { callbackUrl: '/' })} className="w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition">
+              <div onClick={() => signIn('google', { callbackUrl: '/profile' })} className="w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer transition">
                 <Google />
               </div>
-              <div onClick={() => signIn('github', { callbackUrl: '/' })} className="w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition">
+              <div onClick={() => signIn('github', { callbackUrl: '/profile' })} className="w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer transition">
                 <Github/>
               </div>
             </div>
