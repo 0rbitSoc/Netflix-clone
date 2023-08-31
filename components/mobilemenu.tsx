@@ -12,10 +12,25 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
     }
 
     return (
-        <div className="bg-black w-16 absolute top-8 left-8 py-5 flex-col border-2 border-gray-800 flex">
+        <div className="bg-black w-56 absolute top-[55px] left-20 py-5 flex-col border-2 border-gray-800 flex rounded-md">
             <div className="flex flex-col gap-4">
                 <div className="px-3 text-center text-white hover:underline">
                     Home
+                </div>
+                <div className="px-3 text-center text-white hover:underline">
+                    Series
+                </div>
+                <div className="px-3 text-center text-white hover:underline">
+                    Films
+                </div>
+                <div className="px-3 text-center text-white hover:underline">
+                    New & Popular
+                </div>
+                <div className="px-3 text-center text-white hover:underline">
+                    My List
+                </div>
+                <div className="px-3 text-center text-white hover:underline">
+                    Browse
                 </div>
             </div>
         </div>
