@@ -1,8 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
+import { useState } from "react";
+import MobileMenu from "./mobilemenu";
 import NavbarItem from "./navbaritem";
+
 import { BsChevronDown } from "react-icons/bs";
 
 const Navbar = () => {
+
+    const [showMobileMenu, setshowMobileMenu] = useState(false);
+
     return (
         <nav className="w-full fixed z-40">
             <div className="px-4 md:px-16 py-6 flex flex-row items-center transition duration-500 bg-zinc-900 bg-opacity-90 ">
@@ -18,6 +24,7 @@ const Navbar = () => {
                 <div className="lg:hidden flex flex-row items-center gap-2 ml-8 cursor-pointer">
                     <p className="text-white text-sm">Browse</p>
                     <BsChevronDown className="text-white h-3 transition "/>    
+                    <MobileMenu />
                 </div>
             </div>
         </nav>
