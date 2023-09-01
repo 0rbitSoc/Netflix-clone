@@ -12,7 +12,6 @@ const Billboard = () => {
             <video
                 className="
                     w-full
-                    object-cover
                     brightness-[60%]
                 " 
                 autoPlay 
