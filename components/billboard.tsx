@@ -29,7 +29,7 @@ const Billboard = () => {
                 poster={data?.thumbnailUrl} 
                 src={data?.videoUrl}
             ></video>
-            <div className="absolute top-[30%] lg:top-[30%] ml-4 md:ml-16 md:top-[20%] ">
+            <div className="absolute top-[30%] ml-4 md:ml-16 md:top-[40%] ">
                 <p className="text-white text-[25px] md:text-4xl h-full w-[50%] lg:text-6xl font-bold drop-shadow-xl">
                     {data?.title}
                 </p>
@@ -54,7 +54,7 @@ const Billboard = () => {
                         hover:bg-opacity-20
                         transition
                     ">
-                        <AiOutlineInfoCircle className="mr-1" />
+                        <AiOutlineInfoCircle className="mr-1" size={25} />
                         More Info
                     </button>
                 </div>
